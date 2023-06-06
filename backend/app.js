@@ -11,9 +11,7 @@ const auth = require('./middlewares/auth');
 const { joiCreateUser, joiLoginUser } = require('./middlewares/validation');
 const centralErrorHandler = require('./middlewares/centralErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { DB_URI } = require('./config');
-
-const { PORT } = process.env;
+const { DB_URI, PORT } = require('./config');
 
 const app = express();
 
