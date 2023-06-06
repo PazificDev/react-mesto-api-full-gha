@@ -14,9 +14,8 @@ export class Api {
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
       headers: {
-        'authorization': `${this._headers.authorization}`,
+        authorization: `${this._headers.authorization}`,
       },
     })
       .then((res) => this._handleResponse(res));
@@ -39,9 +38,8 @@ export class Api {
 
   getUserData() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
       headers: {
-        'authorization': `${this._headers.authorization}`,
+        authorization: `${this._headers.authorization}`,
       },
     })
       .then((res) => this._handleResponse(res))
@@ -116,9 +114,9 @@ export class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://pazificdev.mesto.nomoredomains.rocks",
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-60",
   headers: {
-    'authorization': `Bearer ${localStorage.getItem('jwt')}`,
+    authorization: "55929426-0584-4e05-bc00-25d08953ba88",
     "Content-Type": "application/json",
   },
 });
