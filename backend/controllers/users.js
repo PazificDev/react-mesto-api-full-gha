@@ -6,6 +6,7 @@ const User = require('../models/user');
 const BadRequestErr = require('../errors/BadRequestErr');
 const AlreadyExistErr = require('../errors/AlreadyExistErr');
 const NotFoundErr = require('../errors/NotFoundErr');
+const { secretKey } = require('../config');
 
 const getUsers = (req, res, next) => {
   User.find({})
@@ -136,7 +137,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        'some-secret-key',
+        secretKey,
         { expiresIn: '7d' },
       );
 

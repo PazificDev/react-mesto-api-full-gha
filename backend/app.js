@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -10,13 +11,14 @@ const auth = require('./middlewares/auth');
 const { joiCreateUser, joiLoginUser } = require('./middlewares/validation');
 const centralErrorHandler = require('./middlewares/centralErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { DB_URI } = require('./config');
 
-const { PORT = 3000 } = process.env;
+const { PORT } = process.env;
 
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://localhost:3000', 'localhost:3000'],
+  origin: ['https://pazificdev.mesto.nomoredomains.rocks', 'http://pazificdev.mesto.nomoredomains.rocks', 'pazificdev.mesto.nomoredomains.rocks'],
   optionsSuccessStatus: 200,
   credentials: true,
 };
@@ -25,7 +27,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(cors(corsOptions));
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb1');
+mongoose.connect(DB_URI);
 
 app.use(requestLogger);
 
