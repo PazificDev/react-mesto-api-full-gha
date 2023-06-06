@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.110.255
+IP-адрес 158.160.110.255
 
 Frontend https://pazificdev.mesto.nomoredomains.rocks
 
