@@ -1,0 +1,6 @@
+.root__container {
+    max-width: 880px;
+    margin: 0 auto;
+    min-height: 100vh;
+    height: 100%;
+}

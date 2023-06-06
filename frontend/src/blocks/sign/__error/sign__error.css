@@ -1,0 +1,11 @@
+.sign__error {
+  min-height: 30px;
+  color: red;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0;
+}
+
+.sign__error:last-of-type {
+  margin-bottom: 216px;
+}
