@@ -15,7 +15,7 @@ export class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: `${this._headers.authorization}`,
+        'authorization': `Bearer ${localStorage.getItem('token')}`
       },
     })
       .then((res) => this._handleResponse(res));
@@ -24,7 +24,10 @@ export class Api {
   postNewCard(item) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        'authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: item.name,
         link: item.link,
@@ -39,7 +42,7 @@ export class Api {
   getUserData() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        authorization: `${this._headers.authorization}`,
+        'authorization': `Bearer ${localStorage.getItem('token')}`
       },
     })
       .then((res) => this._handleResponse(res))
@@ -51,7 +54,10 @@ export class Api {
   patchUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        'authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -66,7 +72,10 @@ export class Api {
   patchUserPhoto(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        'authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         avatar: data.avatar,
       }),
@@ -82,7 +91,7 @@ export class Api {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "PUT",
         headers: {
-          authorization: `${this._headers.authorization}`,
+          'authorization': `Bearer ${localStorage.getItem('token')}`
         },
       })
         .then((res) => this._handleResponse(res))
@@ -93,7 +102,7 @@ export class Api {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "DELETE",
         headers: {
-          authorization: `${this._headers.authorization}`,
+          'authorization': `Bearer ${localStorage.getItem('token')}`
         },
       })
         .then((res) => this._handleResponse(res))
@@ -107,7 +116,7 @@ export class Api {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: `${this._headers.authorization}`,
+        'authorization': `Bearer ${localStorage.getItem('token')}`
       },
     }).then((res) => this._handleResponse(res));
   }
@@ -115,10 +124,6 @@ export class Api {
 
 const api = new Api({
   baseUrl: "https://api.pazificdev.mesto.nomoredomains.rocks",
-  headers: {
-    'authorization': `Bearer ${localStorage.getItem('jwt')}`, 
-    "Content-Type": "application/json",
-  },
 });
 
 export default api;
