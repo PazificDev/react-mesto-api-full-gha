@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const {
-  NODE_ENV = 'production',
+  NODE_ENV = 'dev',
   JWT_SECRET,
   PORT = 3000,
   DB_URI = 'mongodb://127.0.0.1:27017/mestodb',
