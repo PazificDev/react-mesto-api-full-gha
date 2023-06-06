@@ -16,7 +16,7 @@ const { DB_URI, PORT } = require('./config');
 const app = express();
 
 const corsOptions = {
-  origin: ['https://pazificdev.mesto.nomoredomains.rocks', 'http://pazificdev.mesto.nomoredomains.rocks', 'pazificdev.mesto.nomoredomains.rocks'],
+  origin: ['http://localhost:3000', 'https://localhost:3000', 'localhost:3000', 'https://pazificdev.mesto.nomoredomains.rocks', 'http://pazificdev.mesto.nomoredomains.rocks', 'pazificdev.mesto.nomoredomains.rocks'],
   optionsSuccessStatus: 200,
   credentials: true,
 };
