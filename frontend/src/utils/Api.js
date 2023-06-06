@@ -1,7 +1,6 @@
 export class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
   }
 
   _handleResponse(res) {
@@ -15,7 +14,7 @@ export class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`
+        'authorization': `Bearer ${localStorage.getItem('jwt')}`
       },
     })
       .then((res) => this._handleResponse(res));
@@ -25,7 +24,7 @@ export class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`,
+        'authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -42,7 +41,7 @@ export class Api {
   getUserData() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`
+        'authorization': `Bearer ${localStorage.getItem('jwt')}`
       },
     })
       .then((res) => this._handleResponse(res))
@@ -55,7 +54,7 @@ export class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`,
+        'authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -73,7 +72,7 @@ export class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`,
+        'authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -91,7 +90,7 @@ export class Api {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "PUT",
         headers: {
-          'authorization': `Bearer ${localStorage.getItem('token')}`
+          'authorization': `Bearer ${localStorage.getItem('jwt')}`
         },
       })
         .then((res) => this._handleResponse(res))
@@ -102,7 +101,7 @@ export class Api {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "DELETE",
         headers: {
-          'authorization': `Bearer ${localStorage.getItem('token')}`
+          'authorization': `Bearer ${localStorage.getItem('jwt')}`
         },
       })
         .then((res) => this._handleResponse(res))
@@ -116,7 +115,7 @@ export class Api {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('token')}`
+        'authorization': `Bearer ${localStorage.getItem('jwt')}`
       },
     }).then((res) => this._handleResponse(res));
   }
